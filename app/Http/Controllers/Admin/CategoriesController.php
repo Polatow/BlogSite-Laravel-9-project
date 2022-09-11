@@ -14,7 +14,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        return view('Admin.Categories.list_category');
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.Categories.create_category');
     }
 
     /**
