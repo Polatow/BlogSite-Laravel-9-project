@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Categories;
+use Illuminate\Support\Str;
 class CategoriesController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('Admin.Categories.list_category');
+         $categories =Categories::withCount('habarlar')->paginate(5);
+        return view('Admin.Categories.list_category', compact('categories'));
     }
 
     /**
@@ -35,7 +37,23 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            
+        $request->validate([
+            'category_name'=>'required| unique:categories',
+            'category_status'=>'required',
+        ]);
+
+        $category_name = $request->input('category_name');
+        $category_slug = Str::slug($category_name, '-');
+        $category_status = $request->input('category_status'); 
+
+        Categories::create([
+            'category_name'=>$category_name, 
+            'category_slug'=>$category_slug,
+            'category_status'=>$category_status,
+        ]);
+        return back()->withSuccess('Kategorýa Döredildi !!!');
+
     }
 
     /**
@@ -57,7 +75,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category_update = Categories::find($id) ?? abort(403) ;
+        return view('Admin.Categories.edit_category', compact('category_update'));
     }
 
     /**
@@ -69,7 +88,23 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $request->validate([
+            'category_name'=>'required| unique:categories,category_name,'.$id,
+            'category_status'=>'required',
+        ]);
+        $category_name = $request->input('category_name');
+        $category_slug = Str::slug($category_name, '-');
+        $category_status = $request->input('category_status'); 
+
+        Categories::whereId($id)->update([
+            'category_name'=>$category_name,
+            'category_slug'=>$category_slug,
+            'category_status'=>$category_status
+        ]);
+
+        return redirect()->route('categories.index')->withSuccess('Kategorýa Üýtgedildi !!!');
+
     }
 
     /**
@@ -80,6 +115,7 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Categories::find($id)->delete();
+         return back()->withSuccess('Kategorýa öçürildi');
     }
 }

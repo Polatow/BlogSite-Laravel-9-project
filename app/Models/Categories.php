@@ -14,4 +14,9 @@ class Categories extends Model
         'category_slug',
         'category_status',
     ];
+
+    public function habarlar()
+    {
+        return $this->hasMany('App\Models\Habarlar', 'category_id');
+    }
 }

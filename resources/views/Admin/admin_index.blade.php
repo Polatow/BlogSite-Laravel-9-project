@@ -1,6 +1,7 @@
 @extends('Admin.layouts.app')
 
 @section('title')
+Turkmen news | Admin Panel
 @endsection
 
 
@@ -34,7 +35,7 @@
                 <!-- small box -->
                 <div class="small-box bg-white">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{$category_count}}</h3>
 
                         <p>Kategorýalar</p>
                     </div>
@@ -49,7 +50,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53</h3>
+                        <h3>{{$habar_count}}</h3>
 
                         <p>Habarlar</p>
                     </div>
@@ -64,7 +65,7 @@
                 <!-- small box -->
                 <div class="small-box bg-primary">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{$makala_count}}</h3>
 
                         <p>Makalalar</p>
                     </div>

@@ -6,6 +6,7 @@ Admin Panel | Makalalar
 
 
 @section('css')
+<link rel="stylesheet" href="{{asset('Backend/bootstrap.min.css')}}">
 @endsection
 
 

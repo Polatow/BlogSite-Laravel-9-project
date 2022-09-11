@@ -17,4 +17,8 @@ class Habarlar extends Model
         'habar_status',
         'category_id',
     ];
+
+    public function categories(){
+        return $this->belongsTo('App\Models\Categories');
+    }
 }
