@@ -22,23 +22,37 @@
           <li class="nav-item">
             <a style="color: white;" class="nav-link" href="{{route('contact')}}">Habarlaşmak</a>
           </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
        
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <a style="border: 1px solid white; color:white;" class="btn" type="submit">Login</a>
         </form>
+
+        @guest 
+       
+            @if(Route::has('login'))
+            <a href="{{route('login')}}" style="border: 1px solid white; color:white;" class="btn" type="submit">Login</a>
+          @endif 
+
+          @else
+          <div class="dropdown">
+            <button style="background-color: #0a4275; border:1px solid white; color:white" class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ Auth::user()->name }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="{{route('admin_index')}}">Admin Panel</a></li>
+              <li>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" >Logout</a>
+                    
+            </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+            </ul>
+          </div>
+          @endguest
       </div>
     </div>
   </nav>

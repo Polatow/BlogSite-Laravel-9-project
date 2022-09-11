@@ -15,7 +15,8 @@
                 <!-- User name and logout dropdown -->
                 <li class="nav-item dropdown" style="border:1px solid white; border-radius:5px; padding:0;" >
                     <a  class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-user-circle"></i> Hudayberdi Polatow
+                        <i class="far fa-user-circle"></i>  
+                        {{ Auth::user()->name }}
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -24,9 +25,15 @@
                             <i class="fa fa-sign-out mr-2"></i> Profil Settings
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"
+                        class="dropdown-item" >
                             <i class="fa fa-sign-out mr-2"></i> Logout
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
 
                     </div>
                 </li>

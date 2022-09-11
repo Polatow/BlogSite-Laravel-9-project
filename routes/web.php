@@ -28,7 +28,7 @@ Route::get('/contact', [FrontPageController::class, 'contact'])->name('contact')
 
 Auth::routes(['register'=>false]);
 
-Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix'=>'admin' , 'middleware'=>'auth'], function(){
     Route::get('/', [AdminPageController::class, 'admin_index'])->name('admin_index');
     Route::resource('categories', CategoriesController::class);
     Route::resource('news', HabarlarController::class);

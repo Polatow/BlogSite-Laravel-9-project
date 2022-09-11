@@ -41,6 +41,82 @@
              </a>
              </div>
 
+             <div class="col-md-4 mt-2 mb-2  ">
+                <a class="link"  href="news_single.html">
+                 <div class="card h-100 link ">
+                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
+                     <div class="card-body ">
+                         <h5 class="card-title ">Card title</h5>
+                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
+                     </div>
+                     <div class="card-footer ">
+                         <small class="text-muted ">Last updated 3 mins ago</small>
+                     </div>
+                 </div>
+             </a>
+             </div>
+             <div class="col-md-4 mt-2 mb-2  ">
+                <a class="link"  href="news_single.html">
+                 <div class="card h-100 link ">
+                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
+                     <div class="card-body ">
+                         <h5 class="card-title ">Card title</h5>
+                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
+                     </div>
+                     <div class="card-footer ">
+                         <small class="text-muted ">Last updated 3 mins ago</small>
+                     </div>
+                 </div>
+             </a>
+             </div>
+
+             <div class="col-md-4 mt-2 mb-2  ">
+                <a class="link"  href="news_single.html">
+                 <div class="card h-100 link ">
+                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
+                     <div class="card-body ">
+                         <h5 class="card-title ">Card title</h5>
+                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
+                     </div>
+                     <div class="card-footer ">
+                         <small class="text-muted ">Last updated 3 mins ago</small>
+                     </div>
+                 </div>
+             </a>
+             </div>
+
+
+             <div class="col-md-4 mt-2 mb-2  ">
+                <a class="link"  href="news_single.html">
+                 <div class="card h-100 link ">
+                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
+                     <div class="card-body ">
+                         <h5 class="card-title ">Card title</h5>
+                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
+                     </div>
+                     <div class="card-footer ">
+                         <small class="text-muted ">Last updated 3 mins ago</small>
+                     </div>
+                 </div>
+             </a>
+             </div>
+
+             <div class="col-md-4 mt-2 mb-2  ">
+                <a class="link"  href="news_single.html">
+                 <div class="card h-100 link ">
+                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
+                     <div class="card-body ">
+                         <h5 class="card-title ">Card title</h5>
+                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
+                     </div>
+                     <div class="card-footer ">
+                         <small class="text-muted ">Last updated 3 mins ago</small>
+                     </div>
+                 </div>
+             </a>
+             </div>
+             
+
        
 
 
