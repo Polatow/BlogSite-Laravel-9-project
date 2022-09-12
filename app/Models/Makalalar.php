@@ -14,5 +14,6 @@ class Makalalar extends Model
         'makala_slug',
         'makala_image',
         'makala_description',
+        'makala_status',
     ];
 }
