@@ -23,7 +23,7 @@ Admin Panel | Kategorýa edit
                         <i class="fa fa-arrow-left mr-1"> </i> Yza
                     </a>
                 </div>
-               
+
             </div>
         </div>
         <!-- /.container-fluid -->
@@ -46,15 +46,15 @@ Admin Panel | Kategorýa edit
                         </ul>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                       </div>
-    
+
                     @endif
-                   
+
                 </div>
                 <!-- left column -->
                 <div class="col-md-10 m-auto">
                     <div class="card">
                         <div class="card-header">
-                        
+
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -65,7 +65,7 @@ Admin Panel | Kategorýa edit
                             <label for="exampleInputRounded0">Kategorýanyň ady</label>
                             <input type="text" name="category_name" value="{{$category_update->category_name}}" class="form-control rounded-0" id="exampleInputRounded0" placeholder="Kategorýanyň ady">
                           </div>
-                    
+
                           <div class="form-group">
                             <label for="exampleSelectRounded0">Status </label>
                             <select name="category_status" class="custom-select rounded-0" id="exampleSelectRounded0">
@@ -75,7 +75,7 @@ Admin Panel | Kategorýa edit
                                 <option @if($category_update->category_status == 'draft') selected @endif value="draft">Draft</option>
                             </select>
                           </div>
-                        
+
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
@@ -94,7 +94,7 @@ Admin Panel | Kategorýa edit
 <!-- /.content-wrapper -->
 
 
- 
+
 @endsection
 
 

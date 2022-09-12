@@ -6,6 +6,8 @@ Admin Panel | Habarlar
 
 
 @section('css')
+<link rel="stylesheet" href="{{asset('Backend/bootstrap.min.css')}}">
+
 @endsection
 
 
@@ -18,9 +20,9 @@ Admin Panel | Habarlar
             <div class="row mb-1">
                 <div class="col-sm-6">
                     <h3>Habarlar</h3>
-                   
+
                 </div>
-               
+
 
             </div>
         </div>
@@ -32,13 +34,20 @@ Admin Panel | Habarlar
     <section class="content">
 
         <div class="container-fluid">
+          @if(session()->has('success'))
+
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ session()->get('success') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+      @endif
             <div class="row">
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card-header">
                       <h3 class="card-title">
                         <a href="{{route('news.create')}}" class="btn btn-sm btn-primary">
-                            <i class="fas fa-plus"> </i> Habar Döret  
+                            <i class="fas fa-plus"> </i> Habar Döret
                         </a>
                       </h3>
                     </div>
@@ -55,77 +64,93 @@ Admin Panel | Habarlar
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Update software</td>
-                            <td><img src="{{asset('Front/assets/image/slide-1.jpg')}}" alt="test" style="width:75px; height:75px;"> </td>
-                            <td>TEst </td>
+                            @foreach ($habarlar as $habar)
 
-                            <td><span class="badge bg-success">active</span></td>
-                            <td>
-                                <a href="" class="btn btn-sm btn-outline-info">
-                                    <i class="fas fa-eye"> </i>  
-                                </a>
-                                <a href="" class="btn btn-sm btn-outline-success">
-                                    <i class="fas fa-edit"> </i>  
-                                </a>
-                                <!-- Button trigger modal -->
+                            <tr>
+                                <td>{{$habar->habar_title}}</td>
+                                <td><img src="/habar_images/{{$habar->habar_image}}" alt="test" style="width:75px; height:75px;"> </td>
+                                <td>{{$habar->categories->category_name}} </td>
 
-                       <!-- Button trigger modal -->
-<button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <i class="fas fa-trash"> </i>  
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md">
-      <div class="modal-content">
-        <div class="modal-header">
-          {{-- <h5 class="modal-title text-danger" id="exampleModalLabel"><b>Delete Kategorýa </b></h5> --}}
-          {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
-        </div>
-        <div class="modal-body">
-            <h2 style="text-align: center" class="text-danger"><i class="fas fa-exclamation-triangle"></i></h2>
-            <h6 class="text-black text-wrap text-center">
-                "test testtest fdsf sfsdf sfsd f" kategoryany ocurmek isleyarsinizmi! 
-                 Egerde siz bu kategoryany ocurseniz ona degisli bolan ahli habarlar hem ocuriler !!!
-            </h6>
-           
-            
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-sm btn-outline-danger">
-            <i class="fas fa-trash"> </i>  
-          </button>
+                                <td>
+                                    @switch($habar->habar_status)
+                                    @case('active')
+                                    <span class="badge bg-success">active</span>
+                                        @break
+                                    @case('passive')
+                                    <span class="badge bg-danger">Passive</span>
+                                        @break
+                                        @case('draft')
+                                    <span class="badge bg-warning">Draft</span>
+                                        @break
+                                    @default
+                                @endswitch
+                                </td>
+                                <td>
+                                    <a href="{{route('news.show', $habar->id)}}" class="btn btn-sm btn-outline-info">
+                                        <i class="fas fa-eye"> </i>
+                                    </a>
+                                    <a href="{{route('news.edit',$habar->id)}}" class="btn btn-sm btn-outline-success">
+                                        <i class="fas fa-edit"> </i>
+                                    </a>
+                                    <!-- Button trigger modal -->
+
+                           <!-- Button trigger modal -->
+    <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#habar_delete{{$habar->id}}">
+        <i class="fas fa-trash"> </i>
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="habar_delete{{$habar->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              {{-- <h5 class="modal-title text-danger" id="exampleModalLabel"><b>Delete Kategorýa </b></h5> --}}
+              {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+            </div>
+            <div class="modal-body">
+                <h2 style="text-align: center" class="text-danger"><i class="fas fa-exclamation-triangle"></i></h2>
+                <h6 class="text-black text-wrap text-center">
+                    "{{$habar->habar_title}}" habary hakykatdan hem öçürmek isleýärsiňizmi !!!
+
+                </h6>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+              <form action="{{route('news.destroy', $habar->id)}}" method="post">
+                @csrf
+                @method('Delete')
+                <button type="submit" class="btn btn-sm btn-outline-danger">
+                    <i class="fas fa-trash"> </i>  
+                  </button>
+            </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>         
-   </td>
-                           
-  </tr>
+       </td>
+
+      </tr>
+
+ @endforeach
 
 
-                          
                         </tbody>
                       </table>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
-                      <ul class="pagination pagination-sm m-0 float-right">
-                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                      </ul>
+                        <div class="pagination-sm float-right">
+                            {{$habarlar->links()}}
+                        </div>
                     </div>
                   </div>
                   <!-- /.card -->
-      
-           
+
+
                 </div>
-        
+
               </div>
               <!-- /.row -->
         </div>
@@ -137,8 +162,9 @@ Admin Panel | Habarlar
 <!-- /.content-wrapper -->
 
 
- 
+
 @endsection
+
 
 
 @section('js')

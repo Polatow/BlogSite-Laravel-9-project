@@ -9,7 +9,7 @@ Admin Panel | Habar Döret
 
 <link rel="stylesheet" href="{{asset('Backend/plugins/summernote/summernote-bs4.min.css')}}">
 
-
+<link rel="stylesheet" href="{{asset('Backend/bootstrap.min.css')}}">
  @endsection
 
 
@@ -26,7 +26,7 @@ Admin Panel | Habar Döret
                         <i class="fa fa-arrow-left mr-1"> </i> Yza
                     </a>
                 </div>
-               
+
             </div>
         </div>
         <!-- /.container-fluid -->
@@ -38,51 +38,72 @@ Admin Panel | Habar Döret
 
         <div class="container-fluid">
             <div class="row">
+              <div class="col-md-10 m-auto">
+                @if ($errors->any())
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+
+                @endif
+                @if(session()->has('success'))
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session()->get('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            @endif
+            </div>
+
                 <!-- left column -->
                 <div class="col-md-10 m-auto">
                     <div class="card">
                         <div class="card-header">
-                        
+
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="">
+                            <form action="{{route('news.store')}}" method="post"  enctype="multipart/form-data">
                                 @csrf
                           <div class="form-group">
                             <label for="exampleInputRounded0">Habar title</label>
-                            <input type="text" name="" value="" class="form-control rounded-0" id="exampleInputRounded0" placeholder="Habar title ...">
+                            <input type="text" name="habar_title" value="{{old('habar_title')}}" class="form-control rounded-0" id="exampleInputRounded0" placeholder="Habar title ...">
                           </div>
                           <div class="form-group">
                             <label for="exampleSelectRounded0">Degişli kategorýasy </label>
-                            <select class="custom-select rounded-0" id="exampleSelectRounded0">
-                                <option value=""> Kategorýa saýla</option>
-                                <option value="active">Active</option>
-                                <option value="passive">Passive</option>
-                                <option value="draft">Draft</option>
+                            <select name="category_id" class="custom-select rounded-0" id="exampleSelectRounded0">
+                                <option @if(old('category_id') == '') selected @endif value="" > Kategorýa saýla </option>
+                                @foreach ($categories as $category)
+                                <option   @if(old('category_id') == $category->id) selected @endif value="{{$category->id}}"> {{$category->category_name}}    </option>
+                                @endforeach
                             </select>
                           </div>
 
                           <div class="form-group">
                             <label for="summernote">Habar Description</label>
-                            <textarea  placeholder="Habar Description ..." class="form-control rounded-0 " id="summernote" name="content_abstract"></textarea>
+                            <textarea value="Habar Description ..."  placeholder="Habar Description ..." class="form-control rounded-0 " id="summernote" name="habar_description">{{old('habar_description')}}</textarea>
                           </div>
 
                           <div class="form-group">
                             <label for="formFile">Surat</label>
-                            <input class="form-control rounded-0" type="file" id="formFile" accept="image/*" onchange="loadFile(event)">
+                            <input name ="habar_image" class="form-control rounded-0" type="file" id="formFile" accept="image/*" onchange="loadFile(event)">
                             <img class="mt-1" style="width:150px; height:130px;" id="output"/>
                         </div>
 
                           <div class="form-group">
                             <label for="exampleSelectRounded0">Habar Status </label>
-                            <select class="custom-select rounded-0" id="exampleSelectRounded0">
-                                <option value="">Status saýla</option>
-                                <option value="active">Active</option>
-                                <option value="passive">Passive</option>
-                                <option value="draft">Draft</option>
+                            <select name="habar_status" class="custom-select rounded-0" id="exampleSelectRounded0">
+                                <option @if(old('habar_status') == '') selected @endif value="">Status saýla</option>
+                                <option @if(old('habar_status') == 'active') selected @endif value="active">Active</option>
+                                <option @if(old('habar_status') == 'passive') selected @endif value="passive">Passive</option>
+                                <option @if(old('habar_status') == 'draft') selected @endif value="draft">Draft</option>
                             </select>
                           </div>
-                        
+
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
@@ -101,7 +122,7 @@ Admin Panel | Habar Döret
 <!-- /.content-wrapper -->
 
 
- 
+
 @endsection
 
 
@@ -124,5 +145,5 @@ Admin Panel | Habar Döret
       $('#summernote').summernote()
     })
   </script>
- 
+
 @endsection

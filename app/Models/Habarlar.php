@@ -9,7 +9,9 @@ class Habarlar extends Model
 {
     use HasFactory;
     protected $table = 'Habarlar';
+    protected $primaryKey = 'category_id'; 
     protected $fillable =[
+        'id',
         'habar_title',
         'habar_slug',
         'habar_description',
@@ -18,7 +20,8 @@ class Habarlar extends Model
         'category_id',
     ];
 
-    public function categories(){
-        return $this->belongsTo('App\Models\Categories');
+    public function categories()
+    {
+        return $this->hasOne('App\Models\Categories', 'id');
     }
 }

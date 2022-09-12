@@ -86,7 +86,7 @@ class MakalalarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    { 
         $makala_update = Makalalar::find($id)  ?? abort(403);
         return view('Admin.Makalalar.edit_makala', compact('makala_update'));
     }

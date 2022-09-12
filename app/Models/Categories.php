@@ -9,14 +9,15 @@ class Categories extends Model
 {
     use HasFactory;
     protected $table = 'Categories';
+   
     protected $fillable = [
         'category_name',
         'category_slug',
         'category_status',
     ];
 
-    public function habarlar()
-    {
+    public function habarlar(){
         return $this->hasMany('App\Models\Habarlar', 'category_id');
-    }
+  }
+  
 }

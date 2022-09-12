@@ -1,6 +1,7 @@
 @extends('Front.layouts.app')
 
 @section('title')
+Turkmen news | Makalalar
 @endsection
 
 
