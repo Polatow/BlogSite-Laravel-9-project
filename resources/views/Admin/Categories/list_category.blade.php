@@ -64,7 +64,7 @@ Admin Panel | Kategorýalar
                         <tbody>
                             @foreach ($categories as $category)
                             <tr>
-                                <td>{{$category->category_name}}</td>
+                                <td>  {{ Str::limit($category->category_name , 50) }}</td>
                                 <td>{{$category->habarlar_count}}</td>
                                 <td>
                                         @switch($category->category_status)

@@ -28,6 +28,7 @@
                         </p>
                     </a>
                 </li>
+             
                 <li class="nav-item  ">
                     <a href="#" class="nav-link "  >
                         <i class="nav-icon fas fa-book"></i>
@@ -53,6 +54,33 @@
                         </li>
                     </ul>
                 </li>
+
+                   
+                <li class="nav-item  ">
+                    <a href="#" class="nav-link "  >
+                        <i class="nav-icon fas fa-info-circle"></i>
+                        <p>
+                            Information
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('about.index')}}" class="nav-link {{request()->RouteIs('about.*') ? 'active' : ''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Biz Barada</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('contact.index')}}" class="nav-link {{request()->RouteIs('contact.*') ? 'active' : ''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Contact</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
 
             </ul>
         </nav>

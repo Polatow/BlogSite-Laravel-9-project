@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             CategoriesSeeder::class,
             MakalalarSeeder::class,
             HabarlarSeeder::class,
+            AboutSeeder::class,
+            ContactSeeder::class,
 
         ]);
     }

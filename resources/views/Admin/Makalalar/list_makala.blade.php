@@ -81,7 +81,7 @@ Admin Panel | Makalalar
                                                 @default
                                                 @endswitch
                             <td>
-                                <a href="" class="btn btn-sm btn-outline-info">
+                                <a href="{{route('makalalar.show', $makala->id)}}" class="btn btn-sm btn-outline-info">
                                     <i class="fas fa-eye"> </i>  
                                 </a>
                                 <a href="{{route('makalalar.edit', $makala->id)}}" class="btn btn-sm btn-outline-success">

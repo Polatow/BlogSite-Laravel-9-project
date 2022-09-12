@@ -76,7 +76,8 @@ class MakalalarController extends Controller
      */
     public function show($id)
     {
-        //
+         $show_makala = Makalalar::find($id);
+         return view('Admin.Makalalar.show_makala', compact('show_makala'));
     }
 
     /**

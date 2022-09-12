@@ -67,7 +67,7 @@ Admin Panel | Habarlar
                             @foreach ($habarlar as $habar)
 
                             <tr>
-                                <td>{{$habar->habar_title}}</td>
+                                <td>{{ Str::limit($habar->habar_title, 50) }}</td>
                                 <td><img src="/habar_images/{{$habar->habar_image}}" alt="test" style="width:75px; height:75px;"> </td>
                                 <td>{{$habar->categories->category_name}} </td>
 

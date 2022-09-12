@@ -84,8 +84,9 @@ class HabarlarController extends Controller
      */
     public function show($id)
     {
-        $show_habar  = Habarlar::findOrFail($id);
-        dd($show_habar);
+          $show_habar  = Habarlar::whereId($id)->with('categories')->first();
+
+          return view('Admin.Habarlar.show_habar', compact('show_habar'));
     }
 
     /**

@@ -1,12 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\Front\FrontPageController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\MakalalarController;
 use App\Http\Controllers\Admin\HabarlarController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\ContactController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,11 +33,15 @@ Route::get('/contact', [FrontPageController::class, 'contact'])->name('contact')
 
 Auth::routes(['register'=>false]);
 
+
 Route::group(['prefix'=>'admin' , 'middleware'=>'auth'], function(){
     Route::get('/', [AdminPageController::class, 'admin_index'])->name('admin_index');
     Route::resource('categories', CategoriesController::class);
     Route::resource('news', HabarlarController::class);
     Route::resource('makalalar', MakalalarController::class);
+    Route::resource('about', AboutController::class);
+    Route::resource('contact', ContactController::class);
+
 });
 
 
