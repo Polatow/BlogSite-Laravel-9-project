@@ -20,11 +20,7 @@
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                      
-                        <a href="#" class="dropdown-item">
-                            <i class="fa fa-sign-out mr-2"></i> Profil Settings
-                        </a>
-                        <div class="dropdown-divider"></div>
+                 
                         <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"

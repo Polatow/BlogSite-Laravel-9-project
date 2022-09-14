@@ -6,6 +6,8 @@ TÜRKMEN NEWS
 
 
 @section('css')
+<link rel="stylesheet" href="{{asset('Backend/bootstrap.min.css')}}">
+
 @endsection
 
 
@@ -40,76 +42,26 @@ TÜRKMEN NEWS
     <div class="container ">
         <div class="row ">
             
-            <div class="col-md-3 mt-2 mb-2  ">
-                <a class="link"  href="news_single.html">
-                 <div class="card h-100 link ">
-                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
-                     <div class="card-body ">
-                         <h5 class="card-title ">Card title</h5>
-                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
-                     </div>
-                     <div class="card-footer ">
-                         <small class="text-muted ">Last updated 3 mins ago</small>
-                     </div>
-                 </div>
-             </a>
+    @foreach ($habarlar as $habar)
+            
+    <div class="col-md-3 mt-2 mb-2  ">
+        <a class="link"  href="{{route('single_news', $habar->habar_slug)}}">
+         <div class="card h-100 link ">
+             <img style="height: 150px;" src="/habar_images/{{$habar->habar_image}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
+             <div class="card-body ">
+                 <h5 class="card-title ">{{$habar->habar_title}}</h5>
+                 {{-- <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p> --}}
              </div>
-
-
-             <div class="col-md-3 mt-2 mb-2  ">
-                <a class="link"  href="news_single.html">
-                 <div class="card h-100 link ">
-                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
-                     <div class="card-body ">
-                         <h5 class="card-title ">Card title</h5>
-                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
-                     </div>
-                     <div class="card-footer ">
-                         <small class="text-muted ">Last updated 3 mins ago</small>
-                     </div>
-                 </div>
-             </a>
+             <div class="card-footer ">
+                <small  style="float: left" class="text-muted ">{{$habar->categories->category_name}}</small>
+                 <small style="float: right" class="text-muted ">{{$habar->created_at->diffForHumans()}}</small>
              </div>
+         </div>
+     </a>
+     </div>
 
-
-             <div class="col-md-3 mt-2 mb-2  ">
-                <a class="link"  href="news_single.html">
-                 <div class="card h-100 link ">
-                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
-                     <div class="card-body ">
-                         <h5 class="card-title ">Card title</h5>
-                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
-                     </div>
-                     <div class="card-footer ">
-                         <small class="text-muted ">Last updated 3 mins ago</small>
-                     </div>
-                 </div>
-             </a>
-             </div>
-
-
-             <div class="col-md-3 mt-2 mb-2  ">
-                <a class="link"  href="news_single.html">
-                 <div class="card h-100 link ">
-                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
-                     <div class="card-body ">
-                         <h5 class="card-title ">Card title</h5>
-                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
-                     </div>
-                     <div class="card-footer ">
-                         <small class="text-muted ">Last updated 3 mins ago</small>
-                     </div>
-                 </div>
-             </a>
-             </div>
-
-
+    @endforeach
              
-
-
-
-        
-        
         </div>
 
     </div>
@@ -138,71 +90,26 @@ TÜRKMEN NEWS
     <div class="container ">
         <div class="row ">
 
-            <div class="col-md-3 mt-2 mb-2  ">
-                <a class="link"  href="news_single.html">
-                 <div class="card h-100 link ">
-                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
-                     <div class="card-body ">
-                         <h5 class="card-title ">Card title</h5>
-                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
-                     </div>
-                     <div class="card-footer ">
-                         <small class="text-muted ">Last updated 3 mins ago</small>
-                     </div>
-                 </div>
-             </a>
+    @foreach ($makalalar as $makala)
+            
+    <div class="col-md-3 mt-2 mb-2  ">
+        <a class="link"  href="#">
+         <div class="card h-100 link ">
+             <img style="height: 150px;" src="/makala_images/{{$makala->makala_image}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
+             <div class="card-body ">
+                 <h5 class="card-title ">{{$makala->makala_title}}</h5>
+                 {{-- <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p> --}}
              </div>
-
-             <div class="col-md-3 mt-2 mb-2  ">
-                <a class="link"  href="news_single.html">
-                 <div class="card h-100 link ">
-                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
-                     <div class="card-body ">
-                         <h5 class="card-title ">Card title</h5>
-                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
-                     </div>
-                     <div class="card-footer ">
-                         <small class="text-muted ">Last updated 3 mins ago</small>
-                     </div>
-                 </div>
-             </a>
+             <div class="card-footer ">
+             
+                 <small style="float: right" class="text-muted ">{{$makala->created_at->diffForHumans()}}</small>
              </div>
+         </div>
+     </a>
+     </div>
 
+    @endforeach
 
-             <div class="col-md-3 mt-2 mb-2  ">
-                <a class="link"  href="news_single.html">
-                 <div class="card h-100 link ">
-                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
-                     <div class="card-body ">
-                         <h5 class="card-title ">Card title</h5>
-                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
-                     </div>
-                     <div class="card-footer ">
-                         <small class="text-muted ">Last updated 3 mins ago</small>
-                     </div>
-                 </div>
-             </a>
-             </div>
-
-
-             <div class="col-md-3 mt-2 mb-2  ">
-                <a class="link"  href="news_single.html">
-                 <div class="card h-100 link ">
-                     <img style="height: 150px;" src="{{asset('Front/assets/image/slide-1.jpg')}}" class="card-img-top " alt="Los Angeles Skyscrapers " />
-                     <div class="card-body ">
-                         <h5 class="card-title ">Card title</h5>
-                         <p class="card-text ">This card has supporting text below as a natural lead-in to additional content.</p>
-                     </div>
-                     <div class="card-footer ">
-                         <small class="text-muted ">Last updated 3 mins ago</small>
-                     </div>
-                 </div>
-             </a>
-             </div>
-
-       
-
-        
         </div>
 
     </div>

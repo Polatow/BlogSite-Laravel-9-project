@@ -4,9 +4,7 @@
 
 ul li a {
     font-size: 18px;
-   
 }
-
 
 .image-ocleg {
     height: 700px !important;
@@ -31,30 +29,23 @@ ul li a {
     padding: 10px;
     background-color: #0a4275;
     opacity: 0.8;
-   
 }
 
-.link{
-    text-decoration:none ;
-    color:black;
-
+.link {
+    text-decoration: none;
+    color: black;
 }
-.link:hover{
+
+.link:hover {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    color:rgb(117, 108, 108);
-   
+    color: rgb(117, 108, 108);
 }
-
-
-
 
 .makala-image {
     position: relative;
     text-align: center;
     color: white;
 }
-
-
 
 .title {
     text-align: center;
@@ -64,8 +55,6 @@ ul li a {
     /* text-decoration: underline; */
     font-family: 'Times New Roman', Times, serif;
 }
-
-
 
 .centered_makala {
     position: absolute;
@@ -82,10 +71,17 @@ ul li a {
     opacity: 0.8;
 }
 
-
 .actives {
     background-color: #0a4275;
     color: white;
     font-size: 20px;
     width: 100%;
+}
+
+.post_title {
+    background-color: #a6d3e7;
+    padding: 1%;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    ;
 }

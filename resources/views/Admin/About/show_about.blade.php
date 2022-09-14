@@ -20,9 +20,11 @@ Admin Panel | Biz Barada
             <div class="row mb-1">
                 <div class="col-sm-6">
                     <h3>Biz Barada</h3>
-                   
+                    <a href="{{route('about.index')}}" class="btn btn-sm btn-primary">
+                        <i class="fa fa-arrow-left mr-1"> </i> Yza
+                    </a>
                 </div>
-               
+
 
             </div>
         </div>
@@ -44,26 +46,26 @@ Admin Panel | Biz Barada
             <div class="row">
                 <div class="col-md-12">
                   <div class="card">
-                    <div class="card-header"> 
+                    <div class="card-header">
                         </div>
-                   
-                  
-                    <div class="card-body"> 
+
+
+                    <div class="card-body">
                         {!!  $about_show->about_description  !!}
                     </div>
-                   
+
                     <!-- /.card-body -->
                     <div class="card-footer clearfix  ">
                         <a href="{{route('about.edit', $about_show->id)}}" class="btn btn-sm btn-outline-success">
-                             <i class="fas fa-edit"> </i>  Edit 
-                         </a> 
+                             <i class="fas fa-edit"> </i>  Edit
+                         </a>
                     </div>
                   </div>
                   <!-- /.card -->
-      
-           
+
+
                 </div>
-        
+
               </div>
               <!-- /.row -->
         </div>
@@ -75,7 +77,7 @@ Admin Panel | Biz Barada
 <!-- /.content-wrapper -->
 
 
- 
+
 @endsection
 
 

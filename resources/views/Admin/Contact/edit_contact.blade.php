@@ -7,7 +7,7 @@ Admin Panel | Contact Edit
 
 @section('css')
 
-<link rel="stylesheet" href="{{asset('Backend/plugins/summernote/summernote-bs4.min.css')}}">
+
 
 <link rel="stylesheet" href="{{asset('Backend/bootstrap.min.css')}}">
 
@@ -104,22 +104,7 @@ Admin Panel | Contact Edit
 
 @section('js')
 
-<script src="{{asset('Backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<script>
- var loadFile = function(event) {
-      var reader = new FileReader();
-      reader.onload = function(){
-        var output = document.getElementById('output');
-        output.src = reader.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    };
 
 
-    $(function () {
-      // Summernote
-      $('#summernote').summernote()
-    })
-  </script>
 
 @endsection

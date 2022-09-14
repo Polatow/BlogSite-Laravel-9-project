@@ -24,8 +24,8 @@
           </li>
        
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" action="{{route('search')}}" method="GET">
+          <input name="gozleg" value="{{old('gozleg')}}" class="form-control me-2" type="" placeholder="Search" aria-label="Search">
         </form>
 
         @guest 
